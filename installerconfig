@@ -11,7 +11,7 @@ echo "===> Running installerconfig"
 
 echo "===> Raising network"
 # grab the first interface that is not lo0
-NETIF=`ifconfig -l | tr ' ' '\n' | grep -v 'lo0' | head -n1`
+NETIF=$(ifconfig -l | tr ' ' '\n' | awk '!/lo0/{print$0;exit}')
 ifconfig $NETIF up
 dhclient $NETIF
 
