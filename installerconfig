@@ -1,6 +1,6 @@
 export nonInteractive="YES"
 export ZFSBOOT_VDEV_TYPE="stripe"
-export ZFSBOOT_DISKS="ada0"
+export ZFSBOOT_DISKS="$(geom disk list | awk '/Geom name/{print$NF}' | grep -v ^$(glabel list | grep -B 3 FreeBSD_Install | awk '/Geom name:/{print$3}' | awk -F 's2a' '{print$1}')$ | tr '\n' ' ' | sed 's/ $//g')"
 export ZFSBOOT_SWAP_SIZE=""
 export ZFSBOOT_FORCE_4K_SECTORS=""
 DISTRIBUTIONS="kernel.txz base.txz"
