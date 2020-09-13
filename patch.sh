@@ -14,3 +14,4 @@ mount /dev/md1s2a /mnt
 cp ./installerconfig /mnt/etc/installerconfig
 
 umount /mnt
+mdconfig -d -u md1
