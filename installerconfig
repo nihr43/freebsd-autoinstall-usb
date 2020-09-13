@@ -19,6 +19,10 @@ echo "===> Installing pkg"
 env ASSUME_ALWAYS_YES=YES pkg update
 pkg install -y ca_root_nss
 
+echo "===> Updating system"
+env PAGER=cat freebsd-update fetch
+env PAGER=cat freebsd-update install
+
 echo "===> Writing rc.conf"
 # use mac address as unique hostname
 UUID=`ifconfig $NETIF \
@@ -72,9 +76,5 @@ console	none				unknown	off insecure
 ttyu0	"/usr/libexec/getty 3wire"	vt100	off secure
 dcons	"/usr/libexec/getty std.9600"	vt100	off secure
 TTYS
-
-echo "===> Updating system"
-env PAGER=cat freebsd-update fetch
-env PAGER=cat freebsd-update install
 
 reboot
