@@ -35,13 +35,14 @@ hostname="$UUID"
 ifconfig_$NETIF="DHCP"
 
 clear_tmp_enable="YES"
-syslogd_flags="-ss"
-sendmail_enable="NONE"
-sshd_enable="YES"
+dumpdev="NO"
+moused_ums0_enable="NO"
 ntpdate_enable="YES"
 ntpd_enable="YES"
 powerd_enable="YES"
-dumpdev="NO"
+sendmail_enable="NONE"                                                                                                       
+sshd_enable="YES"
+syslogd_flags="-ss"
 zfs_enable="YES"
 RC_CONF
 
